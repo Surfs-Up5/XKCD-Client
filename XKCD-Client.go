@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"math/rand"
 	"net/http"
@@ -42,9 +43,19 @@ func checkComic(id int) bool {
 		fmt.Println("Error checking comic: ", err)
 		return false
 	}
-
 	defer resp.Body.Close()
-	return resp.StatusCode == http.StatusOK
+
+	var status struct {
+		Downloaded    bool `json:"downloaded"`
+		IsDownloading bool `json:"isdownloading"`
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(&status)
+	if err != nil {
+		fmt.Println("Error decoding response: ", err)
+		return false
+	}
+	return status.Downloaded
 }
 
 func requestDownload(id int) {
