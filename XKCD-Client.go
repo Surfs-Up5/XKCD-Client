@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -37,7 +38,12 @@ func main() {
 }
 
 func checkComic(id int) bool {
-	url := fmt.Sprintf("http://localhost:8080/comic/%d", id)
+	serverURL := os.Getenv("SERVER_URL")
+	if serverURL == "" {
+		serverURL = "http://localhost:8080"
+	}
+	url := fmt.Sprintf("%s/comic/%d", serverURL, id)
+
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Error checking comic: ", err)
@@ -47,7 +53,7 @@ func checkComic(id int) bool {
 
 	var status struct {
 		Downloaded    bool `json:"downloaded"`
-		IsDownloading bool `json:"isdownloading"`
+		IsDownloading bool `json:"isDownloading"`
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(&status)
@@ -59,7 +65,11 @@ func checkComic(id int) bool {
 }
 
 func requestDownload(id int) {
-	url := fmt.Sprintf("http://localhost:8080/comic/%d", id)
+	serverURL := os.Getenv("SERVER_URL")
+	if serverURL == "" {
+		serverURL = "http://localhost:8080"
+	}
+	url := fmt.Sprintf("%s/comic/%d", serverURL, id)
 	resp, err := http.Post(url, "application/json", nil)
 	if err != nil {
 		fmt.Println("Error requesting download: ", err)
@@ -68,5 +78,4 @@ func requestDownload(id int) {
 
 	defer resp.Body.Close()
 	fmt.Println("Requested download for comic: ", id)
-
 }
