@@ -1,5 +1,5 @@
 # XKCD Client
-A companion program to the (XKCD Server)[https://github.com/Cole-Parsons/XKCD-Scraper-HTTP-Server.git] project.
+A companion program to the (XKCD-Server)[https://github.com/Cole-Parsons/XKCD-Scraper-HTTP-Server.git] project.
 This client interacts with the XKCD Server’s REST API to request, download, and manage comics automatically over HTTP.
 ---
 ## Overview
