@@ -9,7 +9,8 @@ The XKCD Client is a Go Application designed to:
 * Periodically generate random comic numbers  
 * Query the XKCD Server to check if a comic is downloaded  
 * Request the server to download missing comics  
-* Retrieve and store the downloaded images locally  
+* Retrieve and store the downloaded images locally
+
 This project demonstrates HTTP communication, RESTful client design, and docker integration in Go.  
 ---
 ## Prerequisites  
