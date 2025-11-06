@@ -26,3 +26,6 @@ go run XKCD-Client.go
 # Related Projects
 [XKCD-Server](https://github.com/Cole-Parsons/XKCD-Scraper-HTTP-Server.git)  
 [XKCD-frontend](https://github.com/Cole-Parsons/XKCD-frontend.git)
+---
+## To run the entirety of the Scraper see:  
+[Docker-compose](https://github.com/Cole-Parsons/XKCD-docker-compose.git)
