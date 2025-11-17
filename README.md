@@ -14,7 +14,7 @@ The XKCD Client is a Go Application designed to:
 ---
 ## Prerequisites  
 * Go 1.22+  
-<mark>* A running instance of XKCD Server (from the companion project)</mark>  
+* <mark>A running instance of XKCD Server (from the companion project)</mark>  
 * Optional: Docker and Docker Compose for containerizad deployment  
 ---
 # Set Up  
